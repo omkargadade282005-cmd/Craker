@@ -320,8 +320,8 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("⚡ ZIP CRACKER ⚡")
-        self.setGeometry(100, 60, 820, 680)
-        self.setMinimumSize(700, 550)
+        self.setGeometry(50, 40, 1200, 700)
+        self.setMinimumSize(950, 550)
         
         self.worker = None
         self._start_time = None
@@ -365,9 +365,9 @@ class MainWindow(QMainWindow):
     def init_ui(self):
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
-        main_layout = QVBoxLayout(central_widget)
-        main_layout.setContentsMargins(24, 18, 24, 18)
-        main_layout.setSpacing(12)
+        outer_layout = QVBoxLayout(central_widget)
+        outer_layout.setContentsMargins(24, 18, 24, 18)
+        outer_layout.setSpacing(12)
 
         # ── Header ────────────────────────────────────────────
         header_layout = QVBoxLayout()
@@ -383,13 +383,21 @@ class MainWindow(QMainWindow):
         subtitle_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         header_layout.addWidget(subtitle_label)
 
-        main_layout.addLayout(header_layout)
+        outer_layout.addLayout(header_layout)
 
         # ── Separator ────────────────────────────────────────
         sep = QFrame()
         sep.setObjectName("separator")
         sep.setFrameShape(QFrame.Shape.HLine)
-        main_layout.addWidget(sep)
+        outer_layout.addWidget(sep)
+
+        # ── Horizontal split: Left (controls) | Right (terminal) ──
+        content_layout = QHBoxLayout()
+        content_layout.setSpacing(16)
+
+        # ── LEFT PANEL (controls) ────────────────────────────
+        left_panel = QVBoxLayout()
+        left_panel.setSpacing(12)
 
         # ── Target File ──────────────────────────────────────
         file_group = QGroupBox("⬡  TARGET FILE")
@@ -403,7 +411,7 @@ class MainWindow(QMainWindow):
         file_layout.addWidget(self.zip_path_edit, stretch=1)
         file_layout.addWidget(browse_btn)
         file_group.setLayout(file_layout)
-        main_layout.addWidget(file_group)
+        left_panel.addWidget(file_group)
 
         # ── Attack Mode ──────────────────────────────────────
         mode_group = QGroupBox("⚔  ATTACK MODE")
@@ -553,7 +561,7 @@ class MainWindow(QMainWindow):
         mode_layout.addWidget(self.jtr_options_widget)
 
         mode_group.setLayout(mode_layout)
-        main_layout.addWidget(mode_group)
+        left_panel.addWidget(mode_group)
 
         # ── Controls ─────────────────────────────────────────
         control_layout = QHBoxLayout()
@@ -572,31 +580,38 @@ class MainWindow(QMainWindow):
 
         control_layout.addWidget(self.start_btn, stretch=2)
         control_layout.addWidget(self.stop_btn, stretch=1)
-        main_layout.addLayout(control_layout)
+        left_panel.addLayout(control_layout)
 
         # ── Progress ─────────────────────────────────────────
         self.progress_bar = QProgressBar()
         self.progress_bar.setTextVisible(False)
         self.progress_bar.setRange(0, 0)  # Indeterminate by default
         self.progress_bar.setVisible(False)
-        main_layout.addWidget(self.progress_bar)
+        left_panel.addWidget(self.progress_bar)
 
         self.status_label = QLabel("")
         self.status_label.setObjectName("statusLabel")
         self._base_status = "root@zipcracker:~$ ready"
         self.status_label.setText(self._base_status + "█")
-        main_layout.addWidget(self.status_label)
+        left_panel.addWidget(self.status_label)
 
-        # ── Log Area ─────────────────────────────────────────
+        left_panel.addStretch()
+
+        # ── RIGHT PANEL (terminal output) ────────────────────
         log_group = QGroupBox("⌥  TERMINAL OUTPUT")
         log_layout = QVBoxLayout()
         self.log_area = QTextEdit()
         self.log_area.setReadOnly(True)
-        self.log_area.setMinimumHeight(140)
         self.log_area.setPlaceholderText("Waiting for commands...")
         log_layout.addWidget(self.log_area)
         log_group.setLayout(log_layout)
-        main_layout.addWidget(log_group, stretch=1)
+        log_group.setMinimumWidth(350)
+
+        # Add both panels to horizontal layout
+        content_layout.addLayout(left_panel, stretch=3)
+        content_layout.addWidget(log_group, stretch=2)
+
+        outer_layout.addLayout(content_layout, stretch=1)
 
     # ── File Browse ───────────────────────────────────────────
     def browse_zip(self):
