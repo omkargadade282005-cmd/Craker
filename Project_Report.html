@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Report - Advanced Zip File Password Cracker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            color: #000;
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 50px 60px;
+            border: 3px solid #111;
+            background: #fff;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: #2d8f2d;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 8px;
+        }
+
+        p, li {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 30px 0;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        ol {
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+
+        ol ol {
+            list-style-type: lower-alpha;
+            padding-left: 40px;
+        }
+
+        ol ol ol {
+            list-style-type: lower-roman;
+            padding-left: 50px;
+        }
+
+        a {
+            color: #1a0dab;
+            text-decoration: underline;
+        }
+
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            margin: 8px 0 8px 40px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            min-height: 200px;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        @media print {
+            body { background: #fff; }
+            .page {
+                border: none;
+                margin: 0;
+                padding: 40px 50px;
+                width: 100%;
+            }
+            .page::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ======================== PAGE 1 ======================== -->
+<div class="page">
+
+    <h1>Project Submitted By</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>College Name</th>
+            <th>Branch</th>
+            <th>Email</th>
+            <th>Expected Degree Completion Year</th>
+        </tr>
+        <tr>
+            <td>Rutik Ovhal</td>
+            <td><i>[Your College]</i></td>
+            <td><i>[Your Branch]</i></td>
+            <td><i>[Your Email]</i></td>
+            <td>2026</td>
+        </tr>
+    </table>
+
+    <h1>Project Code</h1>
+    <p><i>[Your Project Code]</i></p>
+
+    <h1>Project Name</h1>
+    <p>Advanced Zip File Password Cracker</p>
+
+    <h2>Abstract</h2>
+    <p>
+        The Advanced Zip File Password Cracker is a GUI-based desktop application built with
+        Python and PyQt6 that allows users to recover lost or forgotten passwords from encrypted
+        Zip archives. The tool supports two attack modes: <strong>Dictionary Attack</strong>
+        (using a wordlist file) and <strong>Brute Force Attack</strong> (using configurable
+        character sets and length ranges). It leverages the <code>pyzipper</code> library to
+        handle modern AES-256 encrypted Zip files – a capability that the standard Python
+        <code>zipfile</code> module lacks. The application uses a multi-threaded architecture
+        (QThread) to ensure the GUI remains responsive during long cracking sessions. Users
+        can start, stop, and monitor the cracking process in real-time through a log window
+        and status indicators.
+    </p>
+
+    <h2>Domain</h2>
+    <p>Cybersecurity, Password Recovery, Desktop Application</p>
+
+    <h2>Technologies Used</h2>
+    <p>Python 3.13, PyQt6, pyzipper, pycryptodomex, itertools</p>
+
+    <h2>Tools Used</h2>
+    <p>VS Code, Git &amp; GitHub, pip (Python Package Manager)</p>
+
+</div>
+
+<!-- ======================== PAGE 2 ======================== -->
+<div class="page">
+
+    <h1>Project Link</h1>
+    <p><i>[GitHub Repository URL – if hosted]</i></p>
+
+    <h1>Instructions to Run the Project</h1>
+    <ol>
+        <li><strong>Clone the Repository</strong>
+            <ol>
+                <li><code>git clone &lt;repository-url&gt;</code></li>
+                <li><code>cd lastCracker/zip_cracker</code></li>
+            </ol>
+        </li>
+        <li><strong>Create &amp; Activate Virtual Environment</strong>
+            <ol>
+                <li><code>python -m venv venv</code></li>
+                <li><code>.\venv\Scripts\Activate.ps1</code> &nbsp;(PowerShell on Windows)</li>
+            </ol>
+        </li>
+        <li><strong>Install Dependencies</strong>
+            <ol>
+                <li><code>pip install PyQt6 pyzipper pyqtdarktheme</code></li>
+            </ol>
+        </li>
+        <li><strong>Run the Application</strong>
+            <ol>
+                <li><code>python main.py</code></li>
+            </ol>
+        </li>
+        <li><strong>Using the Application</strong>
+            <ol>
+                <li>Select a password-protected <code>.zip</code> file.</li>
+                <li>Choose <strong>Dictionary Attack</strong> (select a wordlist) or <strong>Brute Force Attack</strong> (configure charset &amp; length).</li>
+                <li>Click <strong>Start Cracking</strong> and monitor the log output.</li>
+            </ol>
+        </li>
+        <li><strong>Quick Test</strong>
+            <ol>
+                <li>Use the included test file: <code>test_files/test_123.zip</code> (password: <strong>123</strong>)</li>
+                <li>Use the included wordlist: <code>test_files/wordlist.txt</code></li>
+            </ol>
+        </li>
+    </ol>
+
+    <h1>Project Structure</h1>
+    <div class="code-block">zip_cracker/
+├── main.py                 # Entry point
+├── core/
+│   ├── __init__.py
+│   └── worker.py           # Cracking engine (QThread)
+├── ui/
+│   ├── __init__.py
+│   └── main_window.py      # PyQt6 GUI
+├── utils/
+│   └── helpers.py          # Charset &amp; brute-force generators
+└── test_files/
+    ├── test_123.zip         # Sample encrypted zip
+    └── wordlist.txt         # Sample wordlist</div>
+
+</div>
+
+<!-- ======================== PAGE 3 ======================== -->
+<div class="page">
+
+    <h1>Features</h1>
+    <ol>
+        <li><strong>Dictionary Attack</strong> – Load any wordlist file (e.g., rockyou.txt) and iterate through it line-by-line to test passwords.</li>
+        <li><strong>Brute Force Attack</strong> – Generate all possible password combinations from configurable character sets (lowercase, uppercase, digits, symbols) with min/max length controls.</li>
+        <li><strong>AES-256 Support</strong> – Uses <code>pyzipper</code> to crack modern AES-encrypted Zip archives, not just legacy ZipCrypto.</li>
+        <li><strong>Multi-threaded Engine</strong> – Cracking runs on a separate QThread so the GUI never freezes.</li>
+        <li><strong>Real-time Logging</strong> – Live log output showing current attempts, speed, and status.</li>
+        <li><strong>Start / Stop Controls</strong> – Cleanly stop a running attack at any time.</li>
+        <li><strong>Dark Theme</strong> – Modern dark UI via <code>pyqtdarktheme</code>.</li>
+    </ol>
+
+    <h1>Implementation Details</h1>
+    <h2>Core Engine (<code>core/worker.py</code>)</h2>
+    <p>
+        The <code>CrackerWorker</code> class inherits from <code>QThread</code> and runs the
+        password-testing loop on a background thread. It opens the zip archive using
+        <code>pyzipper.AESZipFile</code>, then attempts to read the first file in the archive
+        with each candidate password. If the read succeeds without a <code>RuntimeError</code>,
+        the password is correct.
+    </p>
+    <p>
+        Signals (<code>password_found</code>, <code>stats_updated</code>, <code>progress_updated</code>,
+        <code>error_occurred</code>, <code>task_finished</code>) are used to communicate results
+        back to the main UI thread safely.
+    </p>
+
+    <h2>User Interface (<code>ui/main_window.py</code>)</h2>
+    <p>
+        The main window is built with PyQt6 widgets arranged in grouped sections: file selection,
+        attack mode configuration (radio buttons toggling between dictionary and brute-force panels),
+        control buttons, a progress bar, and a scrollable log area. All user interactions trigger
+        signals that are wired to the cracker engine.
+    </p>
+
+    <h2>Utilities (<code>utils/helpers.py</code>)</h2>
+    <p>
+        Helper functions generate the character set from user selections and produce password
+        candidates via Python's <code>itertools.product</code> as a memory-efficient generator.
+    </p>
+
+    <h1>Output Images / Screenshots</h1>
+    <div class="screenshot-placeholder">
+        [ Paste your application screenshot here ]
+    </div>
+    <div class="screenshot-placeholder">
+        [ Paste a screenshot of a successful password crack here ]
+    </div>
+
+</div>
+
+</body>
+</html>
